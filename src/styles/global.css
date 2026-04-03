@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary:       #E8622A;
+  --primary-dark:  #C94D18;
+  --primary-light: #FFF0EA;
+  --secondary:     #1A1A2E;
+  --surface:       #FFFFFF;
+  --surface-alt:   #FAF8F5;
+  --text:          #1A1A2E;
+  --text-muted:    #7C7C8A;
+  --border:        #EDE8E0;
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:  0 8px 24px rgba(0,0,0,0.10);
+  --shadow-lg:  0 20px 48px rgba(0,0,0,0.14);
+  --shadow-glow:0 8px 32px rgba(232,98,42,0.28);
+  --radius-sm:   10px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-full: 9999px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --nav-height:   68px;
+  --transition:   0.22s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--surface-alt);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-body); cursor: pointer; border: none; outline: none; }
+img { display: block; max-width: 100%; }
+
+.page { min-height: calc(100vh - var(--nav-height)); padding-top: var(--nav-height); }
+
+.table-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(232,98,42,0.2);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: var(--radius-full);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 16px rgba(232,98,42,0.3);
+}
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--primary);
+  transition: all var(--transition);
+}
+.btn-outline:hover { background: var(--primary); color: #fff; }
+
+@keyframes fadeUp  { from { opacity:0; transform:translateY(24px);  } to { opacity:1; transform:translateY(0);  } }
+@keyframes fadeIn  { from { opacity:0; }                                 to { opacity:1; }                         }
+@keyframes scaleIn { from { opacity:0; transform:scale(0.94); }          to { opacity:1; transform:scale(1);    } }
+@keyframes pulse   { 0%,100% { transform:scale(1); } 50% { transform:scale(1.12); } }
+@keyframes spin    { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+
+.anim-fade-up  { animation: fadeUp  0.5s ease both; }
+.anim-fade-in  { animation: fadeIn  0.4s ease both; }
+.anim-scale-in { animation: scaleIn 0.35s ease both; }
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+@media (max-width: 600px) { :root { --nav-height: 60px; } }
